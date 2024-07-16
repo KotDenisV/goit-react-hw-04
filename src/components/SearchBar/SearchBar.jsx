@@ -13,16 +13,15 @@ function SearchBar({ setQuery }) {
     };
     
     const registerSchema = Yup.object({
-      search: Yup.string()
-        .required('This field is required!')        
+      query: Yup.string().required('This field is required!')        
     });
 
     return (
         <div className={s.formWrapper}>
             <Formik validationSchema={registerSchema} initialValues={initialValues} onSubmit={handleSubmit}>
                 <Form className={s.form}>
-                    <Field className={s.input} name='search' placeholder='Enter search value' type='search' />
-                    <ErrorMessage name='search' component='span' className={s.error} />
+                    <Field className={s.input} name='query' placeholder='Enter search value' type='search' />
+                    <ErrorMessage name='query' component='span' className={s.error} />
                     <button type="submit">Search</button>
                 </Form>
             </Formik>            
