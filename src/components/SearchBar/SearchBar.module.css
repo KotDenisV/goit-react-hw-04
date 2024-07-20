@@ -13,3 +13,8 @@
   cursor: pointer;
   background-color: aqua;
 }
+
+.error {
+  color: red;
+  font-weight: 500;
+}

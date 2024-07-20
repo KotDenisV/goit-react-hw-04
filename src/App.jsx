@@ -25,7 +25,7 @@ function App() {
           const response = await requestImage(query, page);          
           setImages(prevImages => (page === 1 ? response.results : [...prevImages, ...response.results]));         
         } catch (error) {
-          setError('Failed to fetch images');
+          setError('Something went wrong!');
         } finally {
         setLoading(false);
         }
@@ -33,15 +33,10 @@ function App() {
     fetchImage();
   }, [query, page]);
   
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const newQuery = e.target.elements[0].value.trim();
-    if (!newQuery) {
-      toast.error('Please enter a value to search for!');
-    } else {
-      setQuery(newQuery);
-      setPage(1);
-    }
+  const handleSearchSubmit = (newQuery) => {
+    setQuery(newQuery);
+    setPage(1);
+    setImages([]);
   };
 
   const handleLoadMore = () => {
@@ -58,7 +53,7 @@ function App() {
 
   return (
     <>
-      <SearchBar onSubmit={handleSubmit} />
+      <SearchBar onSubmit={handleSearchSubmit} />
       {error && <ErrorMessage message={error} />}
       <ImageGallery images={images} openModal={openModal} />
       {loading && <Loader />}
