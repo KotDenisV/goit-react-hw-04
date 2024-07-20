@@ -1,4 +1,4 @@
-.formWrapper {
+.wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -9,7 +9,7 @@
   font-size: 16px;
 }
 
-.error {
-  color: red;
-  font-weight: 500;
+.button {
+  cursor: pointer;
+  background-color: aqua;
 }
